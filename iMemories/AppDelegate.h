@@ -10,7 +10,6 @@
 #import "TemplateType.h"
 #import "Field.h"
 #import "Template.h"
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
 
