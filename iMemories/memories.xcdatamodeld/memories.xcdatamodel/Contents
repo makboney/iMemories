@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Field" representedClassName="Field" syncable="YES">
+        <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="template" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Template" inverseName="field" inverseEntity="Template" syncable="YES"/>
+    </entity>
+    <entity name="FieldValue" representedClassName="FieldValue" syncable="YES">
+        <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="template" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Template" syncable="YES"/>
+    </entity>
+    <entity name="Template" representedClassName="Template" syncable="YES">
+        <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gameId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="field" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Field" inverseName="template" inverseEntity="Field" syncable="YES"/>
+        <relationship name="templateType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TemplateType" syncable="YES"/>
+    </entity>
+    <entity name="TemplateType" representedClassName="TemplateType" syncable="YES">
+        <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Field" positionX="-56" positionY="99" width="128" height="163"/>
+        <element name="FieldValue" positionX="-234" positionY="306" width="128" height="135"/>
+        <element name="Template" positionX="-254" positionY="36" width="128" height="163"/>
+        <element name="TemplateType" positionX="-495" positionY="102" width="128" height="150"/>
+    </elements>
+</model>
