@@ -75,6 +75,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    _memoryVaultTblView = nil;
 }
 
 #pragma mark -
