@@ -328,9 +328,15 @@
 	HUD.delegate = self;
 	
 	// Show the HUD while the provided method executes in a new thread
-    [HUD show:YES];
-    [self saveData];
-	//[HUD showWhileExecuting:@selector(saveData) onTarget:self withObject:nil animated:YES];
+    if ([_selectedTemplate.templateType.name isEqual:@"Album"]) {
+        [HUD show:YES];
+        [self saveData];
+    }
+    else{
+    [HUD showWhileExecuting:@selector(saveData) onTarget:self withObject:nil animated:YES];
+    }
+    
+	//
 }
 - (void)updateItems:(UIBarButtonItem*)btn{
     
