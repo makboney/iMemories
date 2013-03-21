@@ -27,6 +27,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Feature under construction." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
+    [alertView release];
 }
 
 - (void)didReceiveMemoryWarning
