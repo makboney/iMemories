@@ -249,6 +249,23 @@
     [_templateTypeBankAccount setUpdatedDate:[NSDate date]];
     [_templateTypeBankAccount setIcon:UIImagePNGRepresentation([UIImage imageNamed:@"Bank Account@2x.png"])];
     
+    _templateTypeInvestment = (TemplateType *)[NSEntityDescription insertNewObjectForEntityForName:@"TemplateType" inManagedObjectContext:self.managedObjectContext];
+    [_templateTypeInvestment setName:@"Investment"];
+    [_templateTypeInvestment setCreatedBy:[@"admin" uppercaseString]];
+    [_templateTypeInvestment setUpdatedBy:[@"admin" uppercaseString]];
+    [_templateTypeInvestment setCreatedDate:[NSDate date]];
+    [_templateTypeInvestment setUpdatedDate:[NSDate date]];
+    [_templateTypeInvestment setIcon:UIImagePNGRepresentation([UIImage imageNamed:@"Investment Account@2x.png"])];
+    
+    _templateTypePersonality = (TemplateType *)[NSEntityDescription insertNewObjectForEntityForName:@"TemplateType" inManagedObjectContext:self.managedObjectContext];
+    [_templateTypePersonality setName:@"Personality"];
+    [_templateTypePersonality setCreatedBy:[@"admin" uppercaseString]];
+    [_templateTypePersonality setUpdatedBy:[@"admin" uppercaseString]];
+    [_templateTypePersonality setCreatedDate:[NSDate date]];
+    [_templateTypePersonality setUpdatedDate:[NSDate date]];
+    [_templateTypePersonality setIcon:UIImagePNGRepresentation([UIImage imageNamed:@"Personality@2x.png"])];
+    
+    
     if (![self.managedObjectContext save:&error]) {
         //Handle Error
         NSLog(@"Handle Error");
@@ -337,6 +354,46 @@
     [fieldAcountNOTextField setUpdatedDate:[NSDate date]];
     [fieldAcountNOTextField setName:@"Account Number"];
     
+    fieldPhoneNumber = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPhoneNumber setType:@"UITextField"];
+    [fieldPhoneNumber setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPhoneNumber setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPhoneNumber setCreatedDate:[NSDate date]];
+    [fieldPhoneNumber setUpdatedDate:[NSDate date]];
+    [fieldPhoneNumber setName:@"Phone Number"];
+    
+    fieldBrokarageCompanyTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldBrokarageCompanyTextField setType:@"UITextField"];
+    [fieldBrokarageCompanyTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldBrokarageCompanyTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldBrokarageCompanyTextField setCreatedDate:[NSDate date]];
+    [fieldBrokarageCompanyTextField setUpdatedDate:[NSDate date]];
+    [fieldBrokarageCompanyTextField setName:@"Brokerage Company"];
+    
+    fieldAcountBalanceTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldAcountBalanceTextField setType:@"UITextField"];
+    [fieldAcountBalanceTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldAcountBalanceTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldAcountBalanceTextField setCreatedDate:[NSDate date]];
+    [fieldAcountBalanceTextField setUpdatedDate:[NSDate date]];
+    [fieldAcountBalanceTextField setName:@"Acount Balance"];
+    
+    fieldInterestRateTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldInterestRateTextField setType:@"UITextField"];
+    [fieldInterestRateTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldInterestRateTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldInterestRateTextField setCreatedDate:[NSDate date]];
+    [fieldInterestRateTextField setUpdatedDate:[NSDate date]];
+    [fieldInterestRateTextField setName:@"Interest Rate"];
+    
+    fieldSourceOfFund = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldSourceOfFund setType:@"UITextField"];
+    [fieldSourceOfFund setCreatedBy:[@"admin" uppercaseString]];
+    [fieldSourceOfFund setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldSourceOfFund setCreatedDate:[NSDate date]];
+    [fieldSourceOfFund setUpdatedDate:[NSDate date]];
+    [fieldSourceOfFund setName:@"Source of Fund"];
+    
     fieldRoutingNOTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
     [fieldRoutingNOTextField setType:@"UITextField"];
     [fieldRoutingNOTextField setCreatedBy:[@"admin" uppercaseString]];
@@ -344,6 +401,48 @@
     [fieldRoutingNOTextField setCreatedDate:[NSDate date]];
     [fieldRoutingNOTextField setUpdatedDate:[NSDate date]];
     [fieldRoutingNOTextField setName:@"Routing Number"];
+    
+    
+    fieldPersonAdjTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPersonAdjTextField setType:@"UITextField"];
+    [fieldPersonAdjTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPersonAdjTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPersonAdjTextField setCreatedDate:[NSDate date]];
+    [fieldPersonAdjTextField setUpdatedDate:[NSDate date]];
+    [fieldPersonAdjTextField setName:@"Some Adjective About This Person"];
+    
+    fieldPersonTemperTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPersonTemperTextField setType:@"UITextField"];
+    [fieldPersonTemperTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPersonTemperTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPersonTemperTextField setCreatedDate:[NSDate date]];
+    [fieldPersonTemperTextField setUpdatedDate:[NSDate date]];
+    [fieldPersonTemperTextField setName:@"Temperament"];
+    
+    fieldPersonFearTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPersonFearTextField setType:@"UITextField"];
+    [fieldPersonFearTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPersonFearTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPersonFearTextField setCreatedDate:[NSDate date]];
+    [fieldPersonFearTextField setUpdatedDate:[NSDate date]];
+    [fieldPersonFearTextField setName:@"Fears"];
+    
+    fieldPersonFriendTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPersonFearTextField setType:@"UITextField"];
+    [fieldPersonFearTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPersonFearTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPersonFearTextField setCreatedDate:[NSDate date]];
+    [fieldPersonFearTextField setUpdatedDate:[NSDate date]];
+    [fieldPersonFearTextField setName:@"Best Friends"];
+    
+    fieldPersonBirthDayTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
+    [fieldPersonBirthDayTextField setType:@"UITextField"];
+    [fieldPersonBirthDayTextField setCreatedBy:[@"admin" uppercaseString]];
+    [fieldPersonBirthDayTextField setUpdatedBy:[@"admin" uppercaseString]];
+    [fieldPersonBirthDayTextField setCreatedDate:[NSDate date]];
+    [fieldPersonBirthDayTextField setUpdatedDate:[NSDate date]];
+    [fieldPersonBirthDayTextField setName:@"Birth Day"];
+    
     
     fieldAccContctNoTextField = (Field *)[NSEntityDescription insertNewObjectForEntityForName:@"Field" inManagedObjectContext:self.managedObjectContext];
     [fieldAccContctNoTextField setType:@"UITextField"];
@@ -418,38 +517,38 @@
     for (Field *tField in mutableFetchresultsForFields) {
         
         if ([tField.name isEqualToString:@"User Name"]) {
-            tField.order = [NSNumber numberWithInt:1];
+            tField.order = [NSNumber numberWithInt:11];
             [fields4Entry addObject:tField];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Website Address"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:2];
+            tField.order = [NSNumber numberWithInt:12];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Password"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:3];
+            tField.order = [NSNumber numberWithInt:13];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Pin Code"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:4];
+            tField.order = [NSNumber numberWithInt:14];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Note"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:10];
+            tField.order = [NSNumber numberWithInt:15];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Name"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:0];
+            tField.order = [NSNumber numberWithInt:10];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }else if ([tField.name isEqualToString:@"Attachment"]) {
             [fields4Entry addObject:tField];
-            tField.order = [NSNumber numberWithInt:6];
+            tField.order = [NSNumber numberWithInt:16];
             [templateSAPassWord addFieldObject:tField];
             [tField addTemplateObject:templateSAPassWord];
         }
@@ -475,35 +574,35 @@
         
         if ([tField.name isEqualToString:@"Name"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:0];
+            tField.order = [NSNumber numberWithInt:20];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Bank Name"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:1];
+            tField.order = [NSNumber numberWithInt:21];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Account Type"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:3];
+            tField.order = [NSNumber numberWithInt:23];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Account Number"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:2];
+            tField.order = [NSNumber numberWithInt:22];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Routing Number"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:4];
+            tField.order = [NSNumber numberWithInt:24];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Website Address"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:5];
+            tField.order = [NSNumber numberWithInt:25];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Note"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:6];
+            tField.order = [NSNumber numberWithInt:26];
             [tField addTemplateObject:templateSABankAccount];
         }else if ([tField.name isEqualToString:@"Attachment"]) {
             [fields4Entry2 addObject:tField];
-            tField.order = [NSNumber numberWithInt:7];
+            tField.order = [NSNumber numberWithInt:27];
             [tField addTemplateObject:templateSABankAccount];
         }
     }NSLog(@"count %d",[fields4Entry2 count]);
@@ -525,15 +624,15 @@
     for (Field *tField in mutableFetchresultsForFields) {
         if ([tField.name isEqualToString:@"Name"]) {
             [fields4Entry3 addObject:tField];
-            tField.order = [NSNumber numberWithInt:0];
+            tField.order = [NSNumber numberWithInt:30];
             [tField addTemplateObject:templateSAAlbum];
         }else if ([tField.name isEqualToString:@"Album"]) {
             [fields4Entry3 addObject:tField];
-            tField.order = [NSNumber numberWithInt:1];
+            tField.order = [NSNumber numberWithInt:31];
             [tField addTemplateObject:templateSAAlbum];
         }else if ([tField.name isEqualToString:@"Note"]) {
             [fields4Entry3 addObject:tField];
-            tField.order = [NSNumber numberWithInt:20];
+            tField.order = [NSNumber numberWithInt:34];
             [tField addTemplateObject:templateSAAlbum];
         }
     }
@@ -550,6 +649,138 @@
     [templateSAAlbum setTemplateType:_templateTypeAlbum];
     [fields4Entry3 release];
     
+    
+    Template *templateSAPersonality = (Template *)[NSEntityDescription insertNewObjectForEntityForName:@"Template" inManagedObjectContext:self.managedObjectContext];
+    NSMutableArray *fields4EntryPer = [[NSMutableArray alloc] init];
+    for (Field *tField in mutableFetchresultsForFields) {
+        
+        if ([tField.name isEqualToString:@"Some Adjective About This Person"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:42];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Temperament"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:43];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Fears"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:44];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Best Friends"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:45];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Name"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:40];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Note"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:47];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPersonality];
+        }else if ([tField.name isEqualToString:@"Attachment"]) {
+            [fields4EntryPer addObject:tField];
+            tField.order = [NSNumber numberWithInt:46];
+            [templateSAPersonality addFieldObject:tField];
+            [tField addTemplateObject:templateSAPassWord];
+        }
+    }
+    NSLog(@"count %d",[fields4EntryPer count]);
+    
+    [templateSAPersonality setName:@"com.surroundapps.personality"];
+    [templateSAPersonality setCreatedBy:[@"admin" uppercaseString]];
+    [templateSAPersonality setUpdatedBy:[@"admin" uppercaseString]];
+    [templateSAPersonality setCreatedDate:[NSDate date]];
+    [templateSAPersonality setUpdatedDate:[NSDate date]];
+    NSSet *setPerson = [[NSSet alloc] initWithArray:fields4EntryPer];
+    NSLog(@"count %d",[setPerson count]);
+    //[templateSAPassWord addField:setttt];
+    [setPerson release];
+    [templateSAPersonality setTemplateType:_templateTypePersonality];
+    [fields4EntryPer release];
+    
+    
+    Template *templateSAInvestment = (Template *)[NSEntityDescription insertNewObjectForEntityForName:@"Template" inManagedObjectContext:self.managedObjectContext];
+    NSMutableArray *fields4EntryInv= [[NSMutableArray alloc] init];
+    for (Field *tField in mutableFetchresultsForFields) {
+        
+        if ([tField.name isEqualToString:@"Brokerage Company"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:51];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Account Type"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:52];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Account Number"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:53];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Account Balance"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:54];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Name"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:50];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Interest Rate"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:55];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Source of Fund"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:56];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Phone Number"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:57];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Website Address"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:58];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Note"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:60];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }else if ([tField.name isEqualToString:@"Attachment"]) {
+            [fields4EntryInv addObject:tField];
+            tField.order = [NSNumber numberWithInt:46];
+            [templateSAInvestment addFieldObject:tField];
+            [tField addTemplateObject:templateSAInvestment];
+        }
+    }
+    NSLog(@"count %d",[fields4EntryInv count]);
+    
+    [templateSAInvestment setName:@"com.surroundapps.invetment"];
+    [templateSAInvestment setCreatedBy:[@"admin" uppercaseString]];
+    [templateSAInvestment setUpdatedBy:[@"admin" uppercaseString]];
+    [templateSAInvestment setCreatedDate:[NSDate date]];
+    [templateSAInvestment setUpdatedDate:[NSDate date]];
+    NSSet *setinvest = [[NSSet alloc] initWithArray:fields4EntryInv];
+    NSLog(@"count %d",[setinvest count]);
+    //[templateSAPassWord addField:setttt];
+    [setinvest release];
+    [templateSAInvestment setTemplateType:_templateTypeInvestment];
+    [fields4EntryInv release];
+    
     if (![self.managedObjectContext save:&error]) {
         //Handle Error
         NSLog(@"Handle Error");
@@ -565,7 +796,114 @@
     NSMutableArray *mutableFetchresultss = [[self.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
     NSLog(@"%@",[mutableFetchresultss description]);
     for (Template *t in mutableFetchresultss) {
-        NSLog(@"%d",[t.field count]);
+        NSLog(@"sa %d",[t.field count]);
     }
 }
+
+/*
+ NSMutableArray *fields4Entry4 = [[NSMutableArray alloc] init];
+ Template *templateSAPersonality = (Template *)[NSEntityDescription insertNewObjectForEntityForName:@"Template" inManagedObjectContext:self.managedObjectContext];
+ for (Field *tField in mutableFetchresultsForFields) {
+ 
+ if ([tField.name isEqualToString:@"Name"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:40];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Some Adjective About This Person"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:41];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Temperament"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:43];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Fears"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:42];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Interest Rate"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:44];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Source Of Fund"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:45];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }else if ([tField.name isEqualToString:@"Phone Number"]) {
+ [fields4Entry4 addObject:tField];
+ tField.order = [NSNumber numberWithInt:46];
+ [templateSAPersonality addFieldObject:tField];
+ [tField addTemplateObject:templateSAPersonality];
+ }
+ }NSLog(@"count %d",[fields4Entry4 count]);
+ 
+ [templateSABankAccount setName:@"com.surroundapps.personality"];
+ [templateSABankAccount setCreatedBy:[@"admin" uppercaseString]];
+ [templateSABankAccount setUpdatedBy:[@"admin" uppercaseString]];
+ [templateSABankAccount setCreatedDate:[NSDate date]];
+ [templateSABankAccount setUpdatedDate:[NSDate date]];
+ 
+ NSSet *setperson = [[NSSet alloc] initWithArray:fields4Entry4];
+ [templateSABankAccount addField:setperson];
+ [setperson release];
+ [templateSABankAccount setTemplateType:_templateTypePersonality];
+ [fields4Entry4 release];
+ 
+ NSMutableArray *fields4Entry5 = [[NSMutableArray alloc] init];
+ Template *templateSAInvestment = (Template *)[NSEntityDescription insertNewObjectForEntityForName:@"Template" inManagedObjectContext:self.managedObjectContext];
+ for (Field *tField in mutableFetchresultsForFields) {
+ 
+ if ([tField.name isEqualToString:@"Name"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:50];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Brokerage Company"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:51];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Account Type"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:52];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Account Number"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:53];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Routing Number"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:54];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Website Address"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:56];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Note"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:58];
+ [tField addTemplateObject:templateSAInvestment];
+ }else if ([tField.name isEqualToString:@"Attachment"]) {
+ [fields4Entry5 addObject:tField];
+ tField.order = [NSNumber numberWithInt:57];
+ [tField addTemplateObject:templateSAInvestment];
+ }
+ }NSLog(@"count %d",[fields4Entry5 count]);
+ 
+ [templateSABankAccount setName:@"com.surroundapps.perdonality"];
+ [templateSABankAccount setCreatedBy:[@"admin" uppercaseString]];
+ [templateSABankAccount setUpdatedBy:[@"admin" uppercaseString]];
+ [templateSABankAccount setCreatedDate:[NSDate date]];
+ [templateSABankAccount setUpdatedDate:[NSDate date]];
+ 
+ NSSet *setttttt = [[NSSet alloc] initWithArray:fields4Entry5];
+ [templateSABankAccount addField:setttttt];
+ [setttttt release];
+ [templateSABankAccount setTemplateType:_templateTypeInvestment];
+ [fields4Entry5 release];
+*/
 @end

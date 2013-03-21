@@ -16,19 +16,39 @@
     TemplateType *_templateTypePassword;
     TemplateType *_templateTypeAlbum;
     TemplateType *_templateTypeBankAccount;
+    TemplateType *_templateTypeInvestment;
+    TemplateType *_templateTypePersonality;
+    
     Field *fieldTitileTextField;
     Field *fieldUserNameTextField;
     Field *fieldUserPassTextField;
     Field *fieldWebSiteTextField;
     Field *fieldPinTextField;
+    
+    Field *fieldPersonAdjTextField;
+    Field *fieldPersonTemperTextField;
+    Field *fieldPersonFearTextField;
+    Field *fieldPersonFriendTextField;
+    Field *fieldPersonBirthDayTextField;
+    
     Field *fieldbankNameTextField;
     Field *fieldAcountTypeTextField;
     Field *fieldAcountNOTextField;
+    Field *fieldPhoneNumber;
     Field *fieldRoutingNOTextField;
     Field *fieldAccContctNoTextField;
+    
+    Field *fieldBrokarageCompanyTextField;
+    Field *fieldAcountBalanceTextField;
+    Field *fieldInterestRateTextField;
+    Field *fieldSourceOfFund;
+    
     Field *fieldAttachment;
+    
     Field *fieldAlbum;
     Field *fieldNote;
+    
+    
 }
 @property (strong, nonatomic) UIWindow *window;
 
