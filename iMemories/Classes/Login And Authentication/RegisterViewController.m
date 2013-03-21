@@ -27,6 +27,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.106 green:0.169 blue:0.204 alpha:1.000]];
+    self.title = @"Register";
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Feature under construction." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
+    [alertView release];
 }
 
 - (void)didReceiveMemoryWarning
