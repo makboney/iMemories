@@ -20,7 +20,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Utility.h"
 #import "MAKScrollView.h"
-@interface AddMemoryVaultController : UIViewController<NLImageViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
+#import "PhotoManager.h"
+#import "MBProgressHUD.h"
+@interface AddMemoryVaultController : UIViewController<NLImageViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate,PhotoManagerDelegate,MBProgressHUDDelegate>
 {
 
     TemplateType *_templateTypeModel;
@@ -36,12 +38,15 @@
     BOOL _isViewUP;
     double _totalDisplacement;
     CGPoint _lastPoint;
+    
+    MBProgressHUD *HUD;
 }
 @property (nonatomic, retain)  IBOutlet UILabel *tlable;
 @property (nonatomic, retain) Template *selectedTemplate;
 @property (nonatomic, retain) FieldValue *selectedFieldValue;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) IBOutlet MAKScrollView *scrollview;
+@property (retain) PhotoManager *photoManager;
 - (IBAction)addBtnTapped:(id)sender;
 - (IBAction)cancelBtnTapped:(id)sender;
 @end

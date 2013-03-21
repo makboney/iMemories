@@ -7,13 +7,52 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "iMemories/Classes/Utility/NLImage Showcase/NLImageShowCase.m"
-         timestampString = "385282575.794813"
+         filePath = "iMemories/Classes/Memory Vault/Add Memory Vault/AddMemoryVaultController.m"
+         timestampString = "385477009.402118"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
-         landmarkName = "-addImage:"
+         startingLineNumber = "498"
+         endingLineNumber = "498"
+         landmarkName = "-photoInfosAvailable:done:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iMemories/Classes/Utility/Photo Manager/PhotoManager.m"
+         timestampString = "385470129.717547"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
+         landmarkName = "-startSavingProcess"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iMemories/Classes/Memory Vault/Add Memory Vault/AddMemoryVaultController.m"
+         timestampString = "385478970.054772"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "510"
+         endingLineNumber = "510"
+         landmarkName = "-photosSaved:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iMemories/Classes/Utility/EGOPhotoViewer/Controller/EGOPhotoViewController/EGOPhotoViewController.m"
+         timestampString = "385479235.742886"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1025"
+         endingLineNumber = "1025"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

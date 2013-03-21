@@ -25,6 +25,7 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize memoryVaultTblView = _memoryVaultTblView;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

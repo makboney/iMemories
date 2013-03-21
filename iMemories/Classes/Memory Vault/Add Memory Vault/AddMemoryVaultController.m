@@ -20,7 +20,7 @@
 @synthesize selectedTemplate = _selectedTemplate;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize selectedFieldValue = _selectedFieldValue;
-
+@synthesize photoManager = _photoManager;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -108,15 +108,23 @@
         [self.view addSubview:_imageViewer];
         
         [self.view addSubview:_imageShowCase];
-        NSArray *tempImages = [dic objectForKey:@"IMAGES"];
-        NSLog(@"temp %d",[tempImages count]);
-        for (UIImage *image in tempImages) {
-            [_images addObject:image];
-            static int counter=0;
-            [_imageShowCase setDeleteMode:NO];
-            [_imageShowCase addImage:image];
-            counter = counter % 6;
-        }
+        //NSArray *tempImages = [dic objectForKey:@"IMAGES"];
+        self.photoManager = [[PhotoManager alloc] initWithAlbumName:[dic objectForKey:@"Name"] andImages:nil delegate:self];
+        [self.photoManager startRetrieving];
+        //NSLog(@"temp %d",[tempImages count]);
+//        for (UIImage *image in tempImages) {
+//            [_images addObject:image];
+//            static int counter=0;
+//            [_imageShowCase setDeleteMode:NO];
+//            [_imageShowCase addImage:image];
+//            counter = counter % 6;
+//        }
+        /*if ([tempImages count] > 0) {
+            self.photoManager = [[PhotoManager alloc] initWithAlbumName:[dic objectForKey:@"Name"] andImages:tempImages delegate:self];
+            [self.photoManager startRetrieving];
+        }*/
+        [_imageShowCase release];
+        [_imageViewer release];
         [self.view setAutoresizesSubviews:YES];
         [self.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         
@@ -236,6 +244,12 @@
     // Dispose of any resources that can be recreated.
     [_textFields release];
     _textFields = nil;
+    
+    [_scrollview release];
+    _scrollview = nil;
+    
+    [_images release];
+    _images = nil;
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
@@ -253,20 +267,22 @@
     [_actionSheet showFromTabBar:self.tabBarController.tabBar];
     [_actionSheet release];
 }
-- (void)addItems:(UIBarButtonItem*)btn{
+- (void)saveData{
+
     NSArray *controls = [_selectedTemplate.field allObjects];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:[controls count]];
     if ([_selectedTemplate.templateType.name isEqual:@"Album"]) {
         [dic setObject:_albmTitleTxtField.text forKey:_albmTitleTxtField.name];
-        NSLog(@"textView %@",_noteTxtView.text);
         [dic setObject:_noteTxtView.text forKey:_noteTxtView.name];
-        [dic setObject:_images forKey:@"IMAGES"];
+        //[dic setObject:_images forKey:@"IMAGES"];
+        self.photoManager = nil;
+        self.photoManager = [[PhotoManager alloc] initWithAlbumName:_albmTitleTxtField.text andImages:_images delegate:self];
+        [self.photoManager startSaving];
     }else{
         for (UIView *subView in _scrollview.subviews) {
             if ([subView isKindOfClass:[MAKControlView class]]) {
                 MAKControlView *tempView = (MAKControlView *)subView;
                 for (UIView *view_ in tempView.subviews) {
-                    
                     if ([view_ isKindOfClass:[MAKTextField class]]) {
                         MAKTextField *txtField = (MAKTextField *)view_;
                         if ([txtField.text length] == 0) {
@@ -276,15 +292,15 @@
                     
                 }
             }
-        if ([subView isKindOfClass:[MAKTextView class]]) {
-            MAKTextView *txtView = (MAKTextView *)subView;
-            if ([txtView.text length] == 0) {
-                [dic setObject:@"No Information Provided" forKey:txtView.name];
-            }else [dic setObject:txtView.text forKey:txtView.name];
-        }
+            if ([subView isKindOfClass:[MAKTextView class]]) {
+                MAKTextView *txtView = (MAKTextView *)subView;
+                if ([txtView.text length] == 0) {
+                    [dic setObject:@"No Information Provided" forKey:txtView.name];
+                }else [dic setObject:txtView.text forKey:txtView.name];
+            }
         }
     }
-
+    
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
     
     FieldValue *fieldValue = (FieldValue *)[NSEntityDescription insertNewObjectForEntityForName:@"FieldValue" inManagedObjectContext:_managedObjectContext];
@@ -301,8 +317,20 @@
         NSLog(@"Handle Error");
     }else{
         
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     }
+}
+- (void)addItems:(UIBarButtonItem*)btn{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:HUD];
+	
+	// Regiser for HUD callbacks so we can remove it from the window at the right time
+	HUD.delegate = self;
+	
+	// Show the HUD while the provided method executes in a new thread
+    [HUD show:YES];
+    [self saveData];
+	//[HUD showWhileExecuting:@selector(saveData) onTarget:self withObject:nil animated:YES];
 }
 - (void)updateItems:(UIBarButtonItem*)btn{
     
@@ -326,9 +354,11 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     if ([_selectedTemplate.templateType.name isEqual:@"Album"]) {
         [dic setObject:_albmTitleTxtField.text forKey:_albmTitleTxtField.name];
-        NSLog(@"textView %@",_noteTxtView.text);
         [dic setObject:_noteTxtView.text forKey:_noteTxtView.name];
-        [dic setObject:_images forKey:@"IMAGES"];
+        //[dic setObject:_images forKey:@"IMAGES"];
+        self.photoManager = nil;
+        self.photoManager = [[PhotoManager alloc] initWithAlbumName:_albmTitleTxtField.text andImages:_images delegate:self];
+        [self.photoManager startSaving];
     }else{
         for (UIView *subView in _scrollview.subviews) {
             if ([subView isKindOfClass:[MAKControlView class]]) {
@@ -359,7 +389,7 @@
         NSLog(@"Handle Error");
     }else{
         
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     }
     [dic release];
 }
@@ -440,22 +470,20 @@
 }
 - (void)imageClicked:(NLImageShowCase *) imageShowCase imageShowCaseCell:(NLImageShowCaseCell *)imageShowCaseCell;
 {
-    //[_imageViewer setImage:[imageShowCaseCell image]];
-    //[imageShowCaseCell index]
-    //[self.navigationController pushViewController:_imagViewController animated:YES];
     NSMutableArray *photos = [[NSMutableArray alloc] initWithCapacity:_images.count];
     for (UIImage *img in _images) {
         MyPhoto *photo = [[MyPhoto alloc] initWithImage:img];
         [photos addObject:photo];
         [photo release];
     }
-    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:photos];
     
+    MyPhotoSource *source = [[MyPhotoSource alloc] initWithPhotos:photos];
     EGOPhotoViewController *photoController = [[EGOPhotoViewController alloc] initWithPhotoSource:source];
     [self.navigationController pushViewController:photoController animated:YES];
     [photoController moveToPhotoAtIndex:[imageShowCaseCell index] animated:YES];
     [photoController release];
     [photos release];
+    [source release];
 }
 - (void)imageTouchLonger:(NLImageShowCase *)imageShowCase imageIndex:(NSInteger)index;
 {
@@ -463,11 +491,30 @@
     [_images removeObjectAtIndex:index];
 }
 
+#pragma mark -
+#pragma mark PhotoManager Delegate
+- (void)photoInfosAvailable:(NSArray *)imageInfos done:(BOOL)done{
+
+    NSLog(done?@"YES":@"NO");
+    for (UIImage *image in imageInfos) {
+        [_images addObject:image];
+        static int counter=0;
+        [_imageShowCase setDeleteMode:NO];
+        [_imageShowCase addImage:image];
+        counter = counter % 6;
+    }
+}
+
+- (void)photosSaved:(BOOL)done{
+
+    NSLog(done?@"YES":@"NO");
+    HUD.labelText = @"Saved";
+    [HUD hide:YES];
+}
 #pragma mark - 
 #pragma mark UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     MAKTextField *currentTextFld = (MAKTextField *)textField;
-    NSLog(@"Name %@", currentTextFld.name);
     if (currentTextFld.tag<[_textFields count] -1) {
         UITextField *textfieldToFocus = [_textFields objectAtIndex:currentTextFld.tag+1];
         [textfieldToFocus becomeFirstResponder];

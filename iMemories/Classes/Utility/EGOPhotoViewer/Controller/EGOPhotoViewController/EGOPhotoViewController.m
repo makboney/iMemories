@@ -988,24 +988,24 @@
 	if ([MFMailComposeViewController canSendMail]) {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && !_popover) {
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", @"Email", nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", @"Email", nil];
 		} else {
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", @"Email", nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", @"Email", nil];
 		}
 #else
-		actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", @"Email", nil];
+		actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", @"Email", nil];
 #endif
 		
 	} else {
 		
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && !_popover) {
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", @"Email", nil];
 		} else {
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", nil];
 		}
 #else
-		actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle", @"Copy", nil];
+		actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Play Puzzle",@"Send as Puzzle", @"Share",@"Take a Backup ", @"Copy", nil];
 #endif
 		
 	}
@@ -1023,17 +1023,27 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	
 	[self setBarsHidden:NO animated:YES];
-	
+	UIAlertView *alertView;
 	if (buttonIndex == actionSheet.cancelButtonIndex) {
 		return;
 	} else if (buttonIndex == actionSheet.firstOtherButtonIndex) {
 		//[self savePhoto];
         [self playPuzzle];
+        return;
 	} else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
-		[self copyPhoto];	
+		//[self copyPhoto];
+        alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Feature under construction." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	} else if (buttonIndex == actionSheet.firstOtherButtonIndex + 2) {
-		[self emailPhoto];	
+		alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Feature under construction." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	}else if (buttonIndex == actionSheet.firstOtherButtonIndex + 3) {
+		alertView = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Feature under construction." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	}else if (buttonIndex == actionSheet.firstOtherButtonIndex + 4) {
+		[self copyPhoto];
+	}else if (buttonIndex == actionSheet.firstOtherButtonIndex + 5) {
+		[self emailPhoto];
 	}
+    [alertView show];
+    [alertView release];
 }
 
 
