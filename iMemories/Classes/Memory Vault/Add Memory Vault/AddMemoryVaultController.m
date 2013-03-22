@@ -427,6 +427,8 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark -
+#pragma mark - UIActionSheet Delegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         UIImagePickerController* picker = [[UIImagePickerController alloc] init];
