@@ -139,10 +139,6 @@
         [_noteTxtView setName:@"Note"];
         [_noteTxtView setDelegate:self];
         [_noteTxtView setText:[dic objectForKey:_noteTxtView.name]];
-        [_noteTxtView.layer setBorderColor:[UIColor grayColor].CGColor];
-        [_noteTxtView.layer setBorderWidth:0.5f];
-        [_noteTxtView.layer setCornerRadius:5.0f];
-        [_noteTxtView setBackgroundColor:[UIColor whiteColor]];
         [self.view addSubview:_noteTxtView];
         [_noteTxtView release];
     }else{
@@ -222,10 +218,6 @@
                 [desctxtView setName:@"Note"];
                 [desctxtView setDelegate:self];
                 [desctxtView setText:[dic objectForKey:desctxtView.name]];
-                [desctxtView.layer setBorderColor:[UIColor grayColor].CGColor];
-                [desctxtView.layer setBorderWidth:0.5f];
-                [desctxtView.layer setCornerRadius:5.0f];
-                [desctxtView setBackgroundColor:[UIColor whiteColor]];
                 [_scrollview addSubview:desctxtView];
                 [desctxtView release];
                 y+=90;

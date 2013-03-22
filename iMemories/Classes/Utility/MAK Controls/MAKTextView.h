@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 @interface MAKTextView : UITextView
 @property (nonatomic, retain) NSString *name;
 @end

@@ -19,13 +19,17 @@
     return self;
 }
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    [self.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.layer setBorderWidth:0.5f];
+    [self.layer setCornerRadius:5.0f];
+    [self setBackgroundColor:[UIColor whiteColor]];
 }
-*/
+
 
 @end
